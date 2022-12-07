@@ -1,0 +1,25 @@
+<tr  >
+    <th scope="row">{{ forloop.counter }}</th>
+    <td>{{ ris.code}}</td>
+    <td>{{ ris.name }}</td>
+    <td>{{ ris.get_modaliti_display }}</td>
+    <td><select name="smrp" class="js-data-example-ajax" hx-post="{% url 'ris-edit' ris.id %}" hx-target="closest tr" hx-swap="outerHTML" hx-trigger="change" style="width: 200px;" >  <option value="{{ris.smrp.id}}">{{ris.smrp.nama}}</option>
+    </select>
+    </td>
+  </tr>
+  <script>
+    $('.js-data-example-ajax').select2({
+        ajax: {
+          url: '/api/smrp',
+          data: function (params) {
+            var query = {
+              search: params.term,
+            }
+      
+            // Query parameters will be ?search=[term]&type=public
+            return query;
+          }
+        }
+      });
+      
+    </script>

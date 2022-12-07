@@ -1,0 +1,10 @@
+
+            {% for row in ris%}
+            <tr>
+              <th scope="row">{{ forloop.counter }}</th>
+              <td>{{ row.code}}</td>
+              <td>{{ row.name }}</td>
+              <td>{{ row.get_modaliti_display }}</td>
+              <td hx-get="{% url 'ris-edit' row.id %}" hx-target="closest tr" hx-swap="outerHTML">{{ row.smrp }}</td>
+            </tr>
+  {% endfor %}

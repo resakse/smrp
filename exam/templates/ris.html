@@ -1,0 +1,53 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<div class="card" >
+  <div class="card-body">
+    <h5 class="card-title">Senarai Ris</h5>
+    <table class="table table-responsive">
+        <thead>
+          <tr class="text-center">
+            <th scope="col">#</th>
+            <th scope="col">Kod</th>
+            <th scope="col">Exam</th>
+            <th scope="col">            
+                <div class="btn-group">
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                      {{ mesin|default:'Modaliti'}}
+                    </button>
+                    <ul class="dropdown-menu">
+                        {% for k,v in modaliti %}
+                      <li><a class="dropdown-item" hx-get="?modaliti={{k}}" hx-target="#tempatris">{{v}}</a></li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                  
+            </th>
+            <th scope="col">SMRP</th>
+          </tr>
+        </thead>
+        <tbody id="tempatris">
+            {% include 'ris-child.html' %}
+        </tbody>
+      </table>
+        </div>
+</div>
+
+
+
+
+{% endblock content %}
+{% block script %}
+<script>
+    document.body.addEventListener('htmx:configRequest', (event) => {
+        event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+      })
+
+window.addEventListener("htmx:load", (e) => {
+    $('select').on('select2:select', function (e) {
+        $(this).closest('select').get(0).dispatchEvent(new Event('change'));
+    });
+});
+</script>
+
+{% endblock script %}
