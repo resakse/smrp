@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-41w#t1c*o1&oz0b3qiy1pj*(+5a(p4+$3%y0my$nl98dh4b^=o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost','resakse.com','*.pengimejan.com','code.resakse.com','bampang.resakse.com','smrp.resakse.com']
+ALLOWED_HOSTS = ['localhost','resakse.com','*.pengimejan.com','code.resakse.com','bampang.resakse.com','smrp.resakse.com','smrp.pengimejan.com']
 CSRF_TRUSTED_ORIGINS = ['https://*.resakse.com','https://*.pengimejan.com']
 
 # Application definition

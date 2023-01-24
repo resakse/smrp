@@ -6,13 +6,13 @@
     <h5 class="card-title">Senarai Ris</h5>
     <table class="table table-responsive">
         <thead>
-          <tr class="text-center">
+          <tr>
             <th scope="col">#</th>
             <th scope="col">Kod</th>
             <th scope="col">Exam</th>
             <th scope="col">            
                 <div class="btn-group">
-                    <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                       {{ mesin|default:'Modaliti'}}
                     </button>
                     <ul class="dropdown-menu">
@@ -48,6 +48,11 @@ window.addEventListener("htmx:load", (e) => {
         $(this).closest('select').get(0).dispatchEvent(new Event('change'));
     });
 });
+window.addEventListener("htmx:afterSwap", (e) => {
+  console.log('abis swap')
+  updateProgress();
+});
+
 </script>
 
 {% endblock script %}

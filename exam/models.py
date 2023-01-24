@@ -45,9 +45,14 @@ class Ris(models.Model):
 
     class Meta:
         verbose_name_plural = "RIS"
+        ordering = ['modaliti','name']
 
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
         return reverse("ris_detail", kwargs={"pk": self.pk})
+    
+    @property
+    def mesin(self):
+        return str(self.get_modaliti_display())
